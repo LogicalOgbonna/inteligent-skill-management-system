@@ -50,7 +50,7 @@ const Nav = ({ active, user, logout }) => {
                   to="/upload-career"
                   className={`nav-link ${active === "career" ? "active" : ""}`}
                 >
-                  Upload Careers
+                  Upload Descipline
                 </Link>
               </li>
             </ul>

@@ -18,7 +18,7 @@ export const errors = error => ({
 
 export const uploadQuestions = data => dispatch => {
   axios
-    .post("/api/question", data)
+    .post("/api/questions", data)
     .then(question => {
       dispatch(questionUploaded(question.data.data));
     })

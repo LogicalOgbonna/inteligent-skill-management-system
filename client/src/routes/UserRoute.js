@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-const UserRoute = ({ component: Component, ...rest }) => {
+const UserRoute = ({ isAuthenticated, component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props => (true ? <Component {...props} /> : <Redirect to="/" />)}
+      render={props =>
+        isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
+      }
     />
   );
 };

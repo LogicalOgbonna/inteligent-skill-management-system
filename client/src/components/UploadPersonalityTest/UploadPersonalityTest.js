@@ -31,23 +31,23 @@ class UploadPersonalityTest extends Component {
             type: row[i][1],
             question_option: [
               {
-                option_value: "disagree",
+                option_value: "1",
                 weight: -2
               },
               {
-                option_value: "slightlyDisagree",
+                option_value: "2",
                 weight: -1
               },
               {
-                option_value: "neutral",
+                option_value: "3",
                 weight: 0
               },
               {
-                option_value: "slightlyAgree",
+                option_value: "4",
                 weight: 1
               },
               {
-                option_value: "agree",
+                option_value: "5",
                 weight: 2
               }
             ]
