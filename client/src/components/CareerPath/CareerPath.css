@@ -1,0 +1,51 @@
+/* a {
+  color: #00ced1;
+  text-decoration: none;
+  position: relative;
+}
+a:before {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0%;
+  border-bottom: 2px solid #00ced1;
+  transition: 0.3s;
+}
+a:hover:before {
+  width: 80%;
+}
+.slogan {
+  float: right;
+  margin: 75px 20px 0px 0px;
+  font-size: 20px;
+} */
+.banner-career {
+  width: 100%;
+  height: 100px;
+  margin: 7px auto;
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  padding-left: 190px;
+}
+.banner2 {
+  color: #656a64;
+  background: #81c573 url(./img/banner2.png) no-repeat center left;
+  font-family: "Arial Narrow";
+}
+
+.banner6 {
+  color: #37535b;
+  background: #b8d8fb url(./img/banner6.png) no-repeat center left;
+  font-family: "Arial Narrow";
+  /* text-transform: uppercase; */
+  /* letter-spacing: 4px; */
+}
+
+.center-spinner {
+  margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
+}

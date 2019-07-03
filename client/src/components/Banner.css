@@ -1,0 +1,138 @@
+/*-- banner --*/
+.banner {
+  background: url(./images/banner.jpg) no-repeat center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  background-size: cover;
+}
+.layer {
+  background: rgba(0, 0, 0, 0.5);
+}
+.w3ls_banner_txt p {
+  color: #eee;
+  text-transform: capitalize;
+  font-size: 15px;
+}
+.banner-text-w3pvt {
+  padding: 17vw 0 11vw;
+  box-sizing: border-box;
+}
+.banner-form-w3 {
+  padding: 12vw 0 0vw;
+  box-sizing: border-box;
+}
+
+h3.b-w3ltxt span {
+  color: #fff;
+}
+h3.b-w3ltxt {
+  font-size: 3.5em;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 1px 1px 0px #333;
+}
+
+h4.b-w3ltxt {
+  font-size: 3em;
+  letter-spacing: 3px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.btn-banner {
+  background: #3369e7;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 1px;
+  padding: 12px 30px;
+  display: inline-block;
+}
+.btn-banner:hover {
+  color: #fff;
+}
+
+.form-style-w3ls input[type="text"],
+.form-style-w3ls input[type="email"],
+.form-style-w3ls input[type="password"],
+select {
+  outline: none;
+  font-size: 14px;
+  border: none;
+  color: #666;
+  background: #f1f1f1;
+  letter-spacing: 0.5px;
+  padding: 14px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+.form-style-w3ls button.btn {
+  color: #fff;
+  background: #3369e7;
+  border: none;
+  padding: 14px 0;
+  outline: none;
+  border-radius: 0;
+  width: 100%;
+  font-size: 15px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  -webkit-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  transition: 0.5s all;
+}
+.form-style-w3ls input[type="submit"]:hover {
+  background: #dc3545;
+}
+.padding {
+  padding: 2.5em;
+  background: #fff;
+}
+.form-style-w3ls span {
+  font-size: 13px;
+  color: #666;
+}
+.form-style-w3ls span a {
+  color: #3369e7;
+}
+
+/*-- //banner --*/
+
+/*-- banner bottom --*/
+/* girds */
+
+.text-effect-wthree {
+  margin-top: 13em;
+}
+
+.text-effect-wthree h5 {
+  font-size: 22px;
+  color: #fff;
+}
+
+.text-effect-wthree p {
+  font-size: 15px;
+  color: #ccc;
+}
+.ser-img span.fa {
+  font-size: 40px;
+  color: #000;
+}
+/* //girds */
+
+h2.heading {
+  font-size: 30px;
+  text-transform: capitalize;
+  color: #333;
+  font-weight: 600;
+}
+
+#error {
+  color: red;
+}
+
+/*-- banner bottom --*/
