@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import readXlsxFile from "read-excel-file";
 import propType from "prop-types";
 import { connect } from "react-redux";
 
-import { uploadCareers } from "../../actions/upload";
+import { uploadCareers, getDesciplines } from "../../actions/upload";
+import { DesciplineTable } from "../../common/Table";
 
 import Nav from "../Nav";
 import Footer from "../Footer";
@@ -18,29 +18,36 @@ class UploadCareer extends Component {
     description: "",
     link: "",
     fields: [],
-    careersAdded: false
+    desciplineAdded: false,
+    allDescipline: []
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.career) {
-      this.setState({ careersAdded: nextProps.career, loading: false });
+    if (nextProps.descipline) {
+      this.setState({ desciplineAdded: nextProps.descipline, loading: false });
     }
+    if (nextProps.allDescipline.length) {
+      this.setState({ allDescipline: nextProps.allDescipline });
+    }
+  }
+  componentDidMount() {
+    this.props.getDesciplines();
   }
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state.fields);
+    // console.log(this.state.fields);
     const descipline = {
       name: this.state.descipline,
       fields: this.state.fields
     };
-    // if (Object.keys(this.state.careers).length > 0) {
-    //   this.setState({ loading: true });
-    //   this.props.uploadCareers(this.state.careers);
-    // }
-    console.log(descipline);
+    if (this.state.fields.length > 0) {
+      this.setState({ loading: true });
+      this.props.uploadCareers(descipline);
+    }
+    // console.log(descipline);
   };
 
   addDescipline = e => {
@@ -55,10 +62,6 @@ class UploadCareer extends Component {
     this.setState({ name: "", skills: "", link: "", description: "", fields });
     e.preventDefault();
   };
-
-  clearAddedQuestion = () => {
-    setTimeout(this.setState({ careersAdded: false }), 1000);
-  };
   render() {
     return (
       <React.Fragment>
@@ -69,9 +72,9 @@ class UploadCareer extends Component {
             style={{ marginTop: "10%", marginBottom: "10%" }}
             className=""
           >
-            {this.state.careersAdded && (
+            {this.state.desciplineAdded && (
               <div className="row">
-                <div className="col-md-6 offset-3">
+                <div className="col-md-6">
                   <div className="alert alert-success alert-dismissible">
                     <a
                       href="#"
@@ -81,14 +84,14 @@ class UploadCareer extends Component {
                     >
                       &times;
                     </a>
-                    <strong>Success!</strong> Careers Uploaded Successfully.
+                    <strong>Success!</strong> Descipline Uploaded Successfully.
                   </div>
                 </div>
               </div>
             )}
             <div className="row">
-              <div className="col-sm-4 offset-4 ">
-                <h5 className="mb-3 text-center">Upload Careers</h5>
+              <div className="col-sm-6 col-md-4 ">
+                <h5 className="mb-3 text-center">Upload Descipline</h5>
                 <div className="form-style-w3ls">
                   <div className="input-group mb-3">
                     <div className="input-group mb-3">
@@ -100,10 +103,10 @@ class UploadCareer extends Component {
                         value={this.state.descipline}
                       >
                         <option defaultValue>Choose...</option>
-                        <option value="computerScience">
+                        <option value="Computer Science">
                           Computer Science
                         </option>
-                        <option value="engineering">Engineering</option>
+                        <option value="Engineering">Engineering</option>
                       </select>
                     </div>
 
@@ -153,7 +156,7 @@ class UploadCareer extends Component {
                         name="description"
                         id="description"
                         rows="3"
-                        cols="40"
+                        cols="70"
                       />
                     </div>
 
@@ -194,6 +197,11 @@ class UploadCareer extends Component {
                   </button>
                 </div>
               </div>
+              <div className="col-sm-6 col-md-8">
+                <h5 className="mb-3 text-center">View Descipline</h5>
+
+                <DesciplineTable desciplines={this.state.allDescipline} />
+              </div>
             </div>
           </form>
         </div>
@@ -204,14 +212,16 @@ class UploadCareer extends Component {
 }
 
 const mapStateToProps = state => ({
-  career: !!state.uploads.careers
+  descipline: !!state.uploads.descipline,
+  allDescipline: state.uploads.allDescipline
 });
 UploadCareer.propType = {
   uploadCareers: propType.func.isRequired,
-  career: propType.bool
+  career: propType.bool,
+  allDescipline: propType.array
 };
 
 export default connect(
   mapStateToProps,
-  { uploadCareers }
+  { uploadCareers, getDesciplines }
 )(UploadCareer);

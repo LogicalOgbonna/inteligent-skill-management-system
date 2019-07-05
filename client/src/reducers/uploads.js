@@ -1,7 +1,8 @@
 import {
   QUESTION_UPLOAD,
-  CAREER_UPLOAD,
-  UPLOAD_ERRRORS
+  DESCIPLINE_UPLOAD,
+  UPLOAD_ERRRORS,
+  ALL_DESCIPLINE
 } from "../actions/types";
 
 const uploads = (state = {}, action = {}) => {
@@ -11,10 +12,15 @@ const uploads = (state = {}, action = {}) => {
         ...state,
         questions: action.questions
       };
-    case CAREER_UPLOAD:
+    case DESCIPLINE_UPLOAD:
       return {
         ...state,
-        careers: action.careers
+        descipline: action.descipline
+      };
+    case ALL_DESCIPLINE:
+      return {
+        ...state,
+        allDescipline: action.descipline
       };
     case UPLOAD_ERRRORS:
       return {

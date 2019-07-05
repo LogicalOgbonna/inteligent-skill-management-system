@@ -7,7 +7,7 @@ import readXlsxFile from "read-excel-file";
 import { getPersonality } from "../../actions/test";
 import { addSubject } from "../../actions/profile";
 
-import { ResultTable, WorkTable } from "./Table";
+import { ResultTable, WorkTable } from "../../common/Table";
 import Nav from "../Nav";
 import Footer from "../Footer";
 import "./CareerPath.css";

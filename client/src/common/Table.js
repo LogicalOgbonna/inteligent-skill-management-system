@@ -124,3 +124,45 @@ export function WorkTable({ data, notRiasec, name }) {
     </React.Fragment>
   );
 }
+
+export const DesciplineTable = ({ desciplines }) => {
+  return (
+    <React.Fragment>
+      {desciplines.length ? (
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Descipline</th>
+              <th scope="col">Field Name</th>
+              <th scope="col">Skills Needed</th>
+              <th scope="col">Description</th>
+              <th scope="col">Helpful Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            {desciplines.map((data, index) => {
+              return (
+                <tr key={data._id}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{data.descipline.name}</td>
+                  {data.descipline.fields.map(field => (
+                    <React.Fragment key={field._id}>
+                      <td>{field.name} </td>
+                      <td>{field.skills} </td>
+                      <td>{field.description} </td>
+                      <td>{field.link} </td>
+                    </React.Fragment>
+                  ))}
+                  {/* <td>{data.grade.toUpperCase()}</td> */}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      ) : (
+        <h5 className="mb-3 text-center">Alfred Style</h5>
+      )}
+    </React.Fragment>
+  );
+};
