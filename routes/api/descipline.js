@@ -8,9 +8,8 @@ router.post(
     if (!req.user.admin) {
       return res.status(401).json({ message: "Unauthorized" });
     } else {
-      const { descipline } = req.body;
       let newDescipline = new Descipline();
-      newDescipline.descipline = descipline;
+      newDescipline.descipline = req.body;
       newDescipline
         .save()
         .then(data => res.json(data))
