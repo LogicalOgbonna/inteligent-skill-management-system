@@ -18,19 +18,8 @@ const split = data => {
   }
 };
 
-const Questions = ({
-  question,
-  onChange,
-  finished,
-  choice,
-  code,
-  realistic,
-  artistic,
-  social,
-  enterprising,
-  convention,
-  investigative
-}) => {
+const Questions = ({ question, onChange, finished, choice }) => {
+  console.log(question);
   const Test = () =>
     question ? (
       <div className="col-md-8 offset-2">
@@ -48,7 +37,7 @@ const Questions = ({
                       type="radio"
                       name={option.option_value}
                       id={option.option_value}
-                      onChange={onChange(option, question.type)}
+                      onChange={e => onChange(option, question.type)}
                       checked={choice === option.option_value}
                       value={option.option_value}
                       className="p-5"
@@ -72,18 +61,7 @@ const Questions = ({
       <div style={{ paddingBottom: "15%" }} className="row">
         <div className="col-md-6 offset-3">
           <div className="pt-5 pl-3">
-            <h3 className="text-muted text-center">
-              Your CAS RIASEC TEST Result
-            </h3>
-            <Card
-              code={code}
-              realistic={realistic}
-              artistic={artistic}
-              social={social}
-              enterprising={enterprising}
-              convention={convention}
-              investigative={investigative}
-            />
+            <h3 className="text-muted text-center">Your Result</h3>
           </div>
           <div className="text-center">
             <Link to="/career" className="btn btn-primary">
@@ -107,14 +85,7 @@ Questions.propTypes = {
   question: propTypes.object,
   onChange: propTypes.func.isRequired,
   finished: propTypes.bool.isRequired,
-  choice: propTypes.string.isRequired,
-  code: propTypes.string.isRequired,
-  realistic: propTypes.number.isRequired,
-  artistic: propTypes.number.isRequired,
-  social: propTypes.number.isRequired,
-  enterprising: propTypes.number.isRequired,
-  convention: propTypes.number.isRequired,
-  investigative: propTypes.number.isRequired
+  choice: propTypes.string.isRequired
 };
 
 export default Questions;

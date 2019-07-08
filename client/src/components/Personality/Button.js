@@ -9,6 +9,9 @@ export default function Button({
   previous,
   finish
 }) {
+  console.log(questions);
+  console.log(lastIndex);
+  console.log(index);
   return (
     <div style={{ marginBottom: "6%" }} className="row mt-0">
       <div className="col-md-4 offset-4">
@@ -26,7 +29,7 @@ export default function Button({
             </div>
             <div className="col-md-4">
               <p className="text-muted text-center">
-                {`${index + 1}/${questions.length}`}{" "}
+                {` question ${index + 1} of ${questions.length}`}{" "}
               </p>
             </div>
             <div className="col-md-4 clear-fix">

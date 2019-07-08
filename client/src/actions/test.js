@@ -18,7 +18,7 @@ export const riasecPersonality = riasec => ({
 
 export const getTest = () => dispatch => {
   axios
-    .get("/api/question")
+    .get("/api/questions")
     .then(question => {
       dispatch(allTest(question.data.questions));
     })

@@ -17,9 +17,7 @@ router.get(
       if (questions.length) {
         return res.json({ message: "All Question", questions });
       } else {
-        return res
-          .status(400)
-          .json({ message: "No Question for You", data: null });
+        return res.json({ message: "No Question for You", data: null });
       }
     });
   }
