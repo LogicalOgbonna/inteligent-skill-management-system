@@ -19,7 +19,6 @@ const split = data => {
 };
 
 const Questions = ({ question, onChange, finished, choice }) => {
-  console.log(question);
   const Test = () =>
     question ? (
       <div className="col-md-8 offset-2">
@@ -37,7 +36,7 @@ const Questions = ({ question, onChange, finished, choice }) => {
                       type="radio"
                       name={option.option_value}
                       id={option.option_value}
-                      onChange={e => onChange(option, question.type)}
+                      onChange={onChange(option, question.type)}
                       checked={choice === option.option_value}
                       value={option.option_value}
                       className="p-5"

@@ -9,9 +9,6 @@ export default function Button({
   previous,
   finish
 }) {
-  console.log(questions);
-  console.log(lastIndex);
-  console.log(index);
   return (
     <div style={{ marginBottom: "6%" }} className="row mt-0">
       <div className="col-md-4 offset-4">

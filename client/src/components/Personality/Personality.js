@@ -192,6 +192,8 @@ class Personality extends Component {
   // };
 
   onChange = (option, type) => e => {
+    console.log(option);
+    console.log(type);
     if (option === null && type === null) {
       this.setState({ [e.target.name]: e.target.value });
     } else {

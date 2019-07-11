@@ -4,7 +4,6 @@ import { PushSpinner } from "react-spinners-kit";
 import { Link } from "react-router-dom";
 
 export default function Holland(props) {
-  console.log(props.questions);
   return (
     <div className="container">
       <div className="container">
