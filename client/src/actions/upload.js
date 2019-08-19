@@ -35,6 +35,12 @@ export const uploadQuestions = data => dispatch => {
     .catch(err => dispatch(errors(err)));
 };
 
+export const getDesciplines = () => dispatch => {
+  axios.get("api/descipline").then(descipline => {
+    dispatch(allDescipline(descipline.data));
+  });
+};
+
 export const uploadCareers = data => dispatch => {
   axios
     .post("/api/descipline", data)
@@ -42,11 +48,4 @@ export const uploadCareers = data => dispatch => {
       dispatch(desciplineUploaded(descipline.data.descipline));
     })
     .catch(err => dispatch(errors(err)));
-};
-
-export const getDesciplines = () => dispatch => {
-  axios.get("api/descipline").then(descipline => {
-    console.log(descipline.data);
-    dispatch(allDescipline(descipline.data));
-  });
 };

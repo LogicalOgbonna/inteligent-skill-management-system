@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import propType from "prop-types";
 import { connect } from "react-redux";
+import validator from "validator";
 
 import { uploadCareers, getDesciplines } from "../../actions/upload";
 import { DesciplineTable } from "../../common/Table";
@@ -19,12 +20,17 @@ class UploadCareer extends Component {
     link: "",
     fields: [],
     desciplineAdded: false,
-    allDescipline: []
+    allDescipline: [],
+    errors: {}
   };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.descipline) {
-      this.setState({ desciplineAdded: nextProps.descipline, loading: false });
+      this.setState({
+        desciplineAdded: nextProps.descipline,
+        loading: false
+      });
+      this.props.getDesciplines();
     }
     if (nextProps.allDescipline.length) {
       this.setState({ allDescipline: nextProps.allDescipline });
@@ -36,30 +42,49 @@ class UploadCareer extends Component {
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  validate = data => {
+    const errors = {};
+    if (!data.descipline) errors.descipline = "Can't be blank";
+    if (!data.name) errors.name = "Can't be blank";
+    if (!data.skills) errors.skills = "Can't be blank";
+    if (!data.description) errors.description = "Can't be blank";
+    if (!validator.isURL(data.link)) errors.link = "Invalid URL";
+    if (!data.link) errors.link = "Can't be blank";
+    return errors;
+  };
   onSubmit = e => {
     e.preventDefault();
-    // console.log(this.state.fields);
     const descipline = {
       name: this.state.descipline,
       fields: this.state.fields
     };
-    if (this.state.fields.length > 0) {
-      this.setState({ loading: true });
-      this.props.uploadCareers(descipline);
-    }
+    this.setState({ loading: true });
+    this.props.uploadCareers(descipline);
+    this.setState({ fields: [] });
     // console.log(descipline);
   };
 
   addDescipline = e => {
-    let fields = this.state.fields;
-    fields.push({
-      name: this.state.name,
-      skills: this.state.skills,
-      link: this.state.link,
-      description: this.state.description
-    });
+    const errors = this.validate(this.state);
+    this.setState({ errors });
 
-    this.setState({ name: "", skills: "", link: "", description: "", fields });
+    let fields = this.state.fields;
+    if (Object.keys(errors).length === 0) {
+      fields.push({
+        name: this.state.name,
+        skills: this.state.skills,
+        link: this.state.link,
+        description: this.state.description
+      });
+
+      this.setState({
+        name: "",
+        skills: "",
+        link: "",
+        description: "",
+        fields
+      });
+    }
     e.preventDefault();
   };
   render() {
@@ -109,6 +134,11 @@ class UploadCareer extends Component {
                         <option value="Engineering">Engineering</option>
                       </select>
                     </div>
+                    {this.state.errors.descipline && (
+                      <span style={{ color: "red" }}>
+                        {this.state.errors.descipline}
+                      </span>
+                    )}
 
                     <input
                       type="text"
@@ -121,6 +151,11 @@ class UploadCareer extends Component {
                       aria-describedby="basic-addon2"
                       onChange={this.onChange}
                     />
+                    {this.state.errors.name && (
+                      <span style={{ color: "red" }}>
+                        {this.state.errors.name}
+                      </span>
+                    )}
 
                     <input
                       type="text"
@@ -133,6 +168,11 @@ class UploadCareer extends Component {
                       aria-describedby="basic-addon2"
                       onChange={this.onChange}
                     />
+                    {this.state.errors.skills && (
+                      <span style={{ color: "red" }}>
+                        {this.state.errors.skills}
+                      </span>
+                    )}
 
                     <input
                       type="text"
@@ -145,6 +185,11 @@ class UploadCareer extends Component {
                       aria-describedby="basic-addon2"
                       onChange={this.onChange}
                     />
+                    {this.state.errors.link && (
+                      <span style={{ color: "red" }}>
+                        {this.state.errors.link}
+                      </span>
+                    )}
 
                     <div className="form-group">
                       <label htmlFor="description">Description *</label>
@@ -158,6 +203,11 @@ class UploadCareer extends Component {
                         rows="3"
                         cols="70"
                       />
+                      {this.state.errors.description && (
+                        <span style={{ color: "red" }}>
+                          {this.state.errors.description}
+                        </span>
+                      )}
                     </div>
 
                     <div className="ml-auto">
@@ -212,7 +262,7 @@ class UploadCareer extends Component {
 }
 
 const mapStateToProps = state => ({
-  descipline: !!state.uploads.descipline,
+  descipline: state.uploads.descipline,
   allDescipline: state.uploads.allDescipline
 });
 UploadCareer.propType = {

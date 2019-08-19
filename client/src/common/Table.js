@@ -126,36 +126,79 @@ export function WorkTable({ data, notRiasec, name }) {
 }
 
 export const DesciplineTable = ({ desciplines }) => {
+  const callHer = data => {
+    let remaining = [];
+    for (let i = 1; i < data.length; i++) {
+      remaining.push(data[i]);
+    }
+    return remaining.map((data, index) => (
+      <tr key={index}>
+        <td>{data.name}</td>
+        <td>{data.skills}</td>
+        <td>{data.description}</td>
+        <td>
+          <a
+            className="btn btn-info btn-md"
+            target="_blank"
+            href={
+              data.link.includes("https://")
+                ? data.link
+                : `https://${data.link}`
+            }
+          >
+            {data.link.replace("https://", "").replace("www.", "")}
+          </a>
+        </td>
+      </tr>
+    ));
+  };
   return (
     <React.Fragment>
       {desciplines.length ? (
         <table className="table table-bordered">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Descipline</th>
-              <th scope="col">Field Name</th>
-              <th scope="col">Skills Needed</th>
-              <th scope="col">Description</th>
-              <th scope="col">Helpful Link</th>
+              <th>#</th>
+              <th>Descipline</th>
+              <th>Field Name</th>
+              <th>Skills Needed</th>
+              <th>Description</th>
+              <th>Helpful Link</th>
             </tr>
           </thead>
           <tbody>
             {desciplines.map((data, index) => {
+              console.log(data);
               return (
-                <tr key={data._id}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{data.descipline.name}</td>
-                  {data.descipline.fields.map(field => (
-                    <React.Fragment key={field._id}>
-                      <td>{field.name} </td>
-                      <td>{field.skills} </td>
-                      <td>{field.description} </td>
-                      <td>{field.link} </td>
-                    </React.Fragment>
-                  ))}
-                  {/* <td>{data.grade.toUpperCase()}</td> */}
-                </tr>
+                <React.Fragment key={data._id}>
+                  <tr>
+                    <th scope="row" rowSpan={data.descipline.fields.length}>
+                      {index + 1}
+                    </th>
+                    <td rowSpan={data.descipline.fields.length}>
+                      {data.descipline.name}
+                    </td>
+                    <td>{data.descipline.fields[0].name}</td>
+                    <td>{data.descipline.fields[0].skills}</td>
+                    <td>{data.descipline.fields[0].description}</td>
+                    <td>
+                      <a
+                        className="btn btn-info btn-md"
+                        target="_blank"
+                        href={
+                          data.descipline.fields[0].link.includes("https://")
+                            ? data.descipline.fields[0].link
+                            : `https://${data.descipline.fields[0].link}`
+                        }
+                      >
+                        {data.descipline.fields[0].link
+                          .replace("https://", "")
+                          .replace("www.", "")}
+                      </a>
+                    </td>
+                  </tr>
+                  {callHer(data.descipline.fields)}
+                </React.Fragment>
               );
             })}
           </tbody>
