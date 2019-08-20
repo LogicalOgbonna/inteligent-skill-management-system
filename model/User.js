@@ -25,6 +25,10 @@ const UserSchema = new Schema({
   admin: {
     type: Boolean,
     default: false
+  },
+  descipline: {
+    type: String,
+    required: true
   }
 });
 

@@ -3,10 +3,10 @@ import validator from "validator";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { login, register } from "../actions/auth";
-import RegisterForm from "../common/RegisterForm";
+import { login, register } from "../../actions/auth";
+import RegisterForm from "../../common/RegisterForm";
 import "./Banner.css";
-import Slider from "./Slider";
+// import Slider from "./Slider";
 // import Card from "../common/Card";
 // import history from "../utils/history";
 
@@ -15,6 +15,7 @@ class Banner extends React.Component {
     email: "",
     password: "",
     confirm_password: "",
+    descipline: "",
     login: false,
     errors: {},
     name: "",
@@ -47,6 +48,8 @@ class Banner extends React.Component {
     if (!data.password) errors.password = "Enter Password";
     if (!data.name) errors.name = "Enter name";
     if (!data.email) errors.email = "Enter Email";
+    if (!data.descipline) errors.descipline = "Enter Descipline";
+    
     if (!validator.isEmail(data.email)) errors.email = "Invalid Email";
     if (data.password !== data.confirm_password)
       errors.confirm_password = "Password must match";
@@ -91,7 +94,7 @@ class Banner extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-lg-7 banner-text-w3pvt">
-                <Slider />
+                {/* <Slider /> */}
               </div>
               <div className="col-lg-5 col-md-8 px-lg-3 px-0">
                 <div className="banner-form-w3 ml-lg-5">
@@ -108,6 +111,7 @@ class Banner extends React.Component {
                         onLogin={this.onLogin}
                         errors={this.state.errors}
                         name={this.state.name}
+                        descipline={this.state.descipline}
                       />
                     </div>
                   ) : (

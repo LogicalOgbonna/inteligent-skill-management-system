@@ -1,11 +1,11 @@
-.personality {
+/* .personality {
   background: url(../images/personality.jpg) no-repeat center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   -ms-background-size: cover;
   background-size: cover;
-}
+} */
 .layer {
   background: rgba(0, 0, 0, 0.5);
 }

@@ -4,15 +4,14 @@ import "bootstrap";
 import { connect } from "react-redux";
 
 import "./Header.css";
-import logo from "./images/s2.png";
+import logo from "../images/s2.png";
 import { Link } from "react-router-dom";
-import { logout } from "../actions/auth";
+import { logout } from "../../actions/auth";
 
 const Header = ({ isAuthenticated, user, logout }) => {
   return (
     <header>
-      <div className="top-head container">
-      </div>
+      <div className="top-head container" />
       <div className="container">
         <nav className="py-3 d-lg-flex">
           <div id="logo">

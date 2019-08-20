@@ -8,8 +8,9 @@ import { getPersonality } from "../../actions/test";
 import { addSubject } from "../../actions/profile";
 
 import { ResultTable, WorkTable } from "../../common/Table";
-import Nav from "../Nav";
-import Footer from "../Footer";
+import Nav from "../../components/Nav/Nav";
+import Footer from "../../components/Footer/Footer";
+import SideBar from "../../components/SideBar/SideBar";
 import "./CareerPath.css";
 // import Card from "../ServiceCard";
 class Career extends Component {
@@ -74,8 +75,15 @@ class Career extends Component {
   render() {
     return (
       <div>
-        <Nav active="career" />
-        {this.state.loading ? (
+        <div className="container-fluid display-table">
+          <div className="row display-table-row">
+            <SideBar page="home" />
+            <div className="col-md-10 col-sm-11 display-table-cell v-align">
+              <Nav />
+              <div className="user-dashboard mt-5">
+                <h1>Dashboard</h1>
+                <h1>Career Path</h1>
+                {this.state.loading ? (
           <div className="center-spinner">
             <div
               style={{ marginTop: "10%", marginBottom: "10%" }}
@@ -187,6 +195,12 @@ class Career extends Component {
             </div>
           </form>
         )}
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <Nav active="career" /> */}
+        
         <Footer isAuthenticated={true} />
       </div>
     );

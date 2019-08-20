@@ -12,7 +12,7 @@ export default function Footer({ isAuthenticated }) {
             <ul className="col-lg-6 links p-0">
               <li>
                 <a href="#home" className="">
-                  Hone
+                  Home
                 </a>
               </li>
               <li>

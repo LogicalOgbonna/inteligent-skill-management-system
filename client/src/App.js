@@ -3,14 +3,15 @@ import { Route, Switch } from "react-router-dom";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
 
-import Landing from "./components/Landing/Landing";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Personality from "./components/Personality/Personality";
-import Career from "./components/CareerPath/CareerPath";
+import Landing from "./pages/Landing/Landing";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Personality from "./pages/Personality/Personality";
+import Career from "./pages/CareerPath/CareerPath";
 import UserRoute from "./routes/UserRoute";
-import Test from "./components/Personality/Test";
-import UploadPersonalityTest from "./components/UploadPersonalityTest/UploadPersonalityTest";
-import UploadCareer from "./components/UploadCareer/UploadCareer";
+import Test from "./pages/Personality/Test";
+import UploadPersonalityTest from "./pages/UploadPersonalityTest/UploadPersonalityTest";
+import UploadCareer from "./pages/UploadCareer/UploadCareer";
+import Specialty from "./pages/Specialty/Specialty";
 
 class App extends Component {
   render() {
@@ -39,6 +40,14 @@ class App extends Component {
           exact
           name="Career"
           component={Career}
+          isAuthenticated={isAuthenticated}
+        />
+
+        <UserRoute
+          path="/specialty"
+          exact
+          name="Career"
+          component={Specialty}
           isAuthenticated={isAuthenticated}
         />
 

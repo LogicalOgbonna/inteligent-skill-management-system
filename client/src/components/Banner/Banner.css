@@ -1,6 +1,6 @@
 /*-- banner --*/
 .banner {
-  background: url(./images/banner.jpg) no-repeat center;
+  background: url(../images/banner.jpg) no-repeat center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

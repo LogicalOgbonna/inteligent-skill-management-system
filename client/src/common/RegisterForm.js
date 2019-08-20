@@ -11,7 +11,8 @@ const RegisterForm = ({
   onSubmit,
   errors,
   name,
-  loading
+  loading,
+  descipline
 }) => {
   const styles = {
     color: "red"
@@ -89,6 +90,23 @@ const RegisterForm = ({
         {errors.name && (
           <span style={styles} id="errors">
             {errors.name}
+          </span>
+        )}
+
+        <select
+          onChange={onChange}
+          name="descipline"
+          className="custom-select"
+          id="inputGroupSelect04"
+          value={descipline}
+        >
+          <option defaultValue>Descipline...</option>
+          <option value="Computer Science">Computer Science</option>
+          <option value="Engineering">Engineering</option>
+        </select>
+        {errors.descipline && (
+          <span style={styles} id="errors">
+            {errors.descipline}
           </span>
         )}
         <input

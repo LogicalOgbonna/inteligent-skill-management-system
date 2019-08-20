@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 import { PushSpinner } from "react-spinners-kit";
 import propType from "prop-types";
 
-import Nav from "../Nav";
-import Footer from "../Footer";
-import "./Dashboard.css";
-import Display from "./Display";
-import About from "./About";
+import Nav from "../../components/Nav/Nav";
+import Footer from "../../components/Footer/Footer";
+import SideBar from "../../components/SideBar/SideBar";
+// import "./style.css";
 
 import { getProfile, createPropfile } from "../../actions/profile";
 
@@ -70,41 +69,19 @@ class Dashboard extends Component {
   render() {
     return (
       <React.Fragment>
-        <Nav active="dashboard" />
-
-        {this.state.loading ? (
-          <div className="col-md-6 offset-4 ">
-            <div
-              style={{
-                marginTop: "50%",
-                marginLeft: "auto",
-                marginRight: "auto"
-              }}
-              className="center-spinner"
-            >
-              <PushSpinner
-                size={50}
-                color="#686769"
-                loading={this.state.loading}
-              />
+        {/* <Nav active="dashboard" /> */}
+        <div className="container-fluid display-table">
+          <div className="row display-table-row">
+            <SideBar page="dashboard" />
+            <div className="col-md-10 col-sm-11 display-table-cell v-align">
+              <Nav />
+              <div className="user-dashboard mt-5">
+                <h1>Dashboard</h1>
+                <h1>Dashboard</h1>
+              </div>
             </div>
           </div>
-        ) : (
-          <React.Fragment>
-            {this.state.hasProfile ? (
-              <Display admin={this.props.user.admin} />
-            ) : (
-              <About
-                onChange={this.onChange}
-                onSubmit={this.onChange}
-                name={this.state.name}
-                year={this.state.year}
-                errors={this.state.errors}
-                school={this.state.school}
-              />
-            )}
-          </React.Fragment>
-        )}
+        </div>
         <Footer isAuthenticated={true} />
       </React.Fragment>
     );

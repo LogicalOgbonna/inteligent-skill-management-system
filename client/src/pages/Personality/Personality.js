@@ -7,8 +7,9 @@ import { PushSpinner } from "react-spinners-kit";
 
 import Questions from "./Questions";
 import Button from "./Button";
-import Nav from "../Nav";
-import Footer from "../Footer";
+import Nav from "../../components/Nav/Nav";
+import Footer from "../../components/Footer/Footer";
+import SideBar from "../../components/SideBar/SideBar";
 import "./Personality.css";
 import Holland from "./Holland.js";
 class Personality extends Component {
@@ -208,7 +209,7 @@ class Personality extends Component {
   render() {
     return (
       <div>
-        <Nav active="personality" />
+        {/* <Nav active="personality" /> */}
         {/* {this.state.loading ? (
           <div className="col-md-6 offset-4 ">
             <div
@@ -228,44 +229,59 @@ class Personality extends Component {
             </div>
           </div>
         ) : ( */}
-        <div className="row">
-          <div className="col-md-12">
-            {!this.state.test && (
-              <Holland
-                onSubmit={this.onSubmit}
-                descipline={this.state.descipline}
-                onChange={this.onChange}
-                loading={this.state.loading}
-                questions={this.state.questions}
-              />
-            )}
-            {this.state.questions.length && (
-              <React.Fragment>
+        <div className="container-fluid display-table">
+          <div className="row display-table-row">
+            <SideBar page="" />
+            <div className="col-md-10 col-sm-11 display-table-cell v-align">
+              <Nav />
+              <div className="user-dashboard mt-5">
+                <h1>Dashboard</h1>
+                <h1>Personality</h1>
                 <div className="row">
-                  <div className="mt-3 col-md-12 ml-5">
-                    <Link to="/personality" className="btn btn-primary ml-auto">
-                      Back
-                    </Link>
+                  <div className="col-md-12">
+                    {!this.state.test && (
+                      <Holland
+                        onSubmit={this.onSubmit}
+                        descipline={this.state.descipline}
+                        onChange={this.onChange}
+                        loading={this.state.loading}
+                        questions={this.state.questions}
+                      />
+                    )}
+                    {this.state.questions.length && (
+                      <React.Fragment>
+                        <div className="row">
+                          <div className="mt-3 col-md-12 ml-5">
+                            <Link
+                              to="/personality"
+                              className="btn btn-primary ml-auto"
+                            >
+                              Back
+                            </Link>
+                          </div>
+                        </div>
+                        <Questions
+                          onChange={this.onChange}
+                          question={this.state.questions[this.state.index]}
+                          finished={this.state.finished}
+                          choice={this.state.choice}
+                        />
+                        {!this.state.finished && (
+                          <Button
+                            index={this.state.index}
+                            lastIndex={this.state.lastIndex}
+                            questions={this.state.questions}
+                            next={this.next}
+                            previous={this.previous}
+                            finish={this.finish}
+                          />
+                        )}
+                      </React.Fragment>
+                    )}
                   </div>
                 </div>
-                <Questions
-                  onChange={this.onChange}
-                  question={this.state.questions[this.state.index]}
-                  finished={this.state.finished}
-                  choice={this.state.choice}
-                />
-                {!this.state.finished && (
-                  <Button
-                    index={this.state.index}
-                    lastIndex={this.state.lastIndex}
-                    questions={this.state.questions}
-                    next={this.next}
-                    previous={this.previous}
-                    finish={this.finish}
-                  />
-                )}
-              </React.Fragment>
-            )}
+              </div>
+            </div>
           </div>
         </div>
 

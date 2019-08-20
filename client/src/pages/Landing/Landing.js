@@ -2,10 +2,10 @@ import propTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
 
-import Header from "../Header";
-import Banner from "../Banner";
-import Services from "../Services";
-import Footer from "../Footer";
+import Header from "../../components/Header/Header";
+import Banner from "../../components/Banner/Banner";
+// import Services from "../../components/Services";
+import Footer from "../../components/Footer/Footer";
 import "../../index.css";
 
 const Landing = ({ isAuthenticated }) => {
@@ -13,7 +13,7 @@ const Landing = ({ isAuthenticated }) => {
     <div>
       <Header isAuthenticated={isAuthenticated} />
       <Banner isAuthenticated={isAuthenticated} />
-      <Services />
+      {/* <Services /> */}
       <Footer isAuthenticated={isAuthenticated} />
     </div>
   );

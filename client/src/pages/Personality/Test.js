@@ -5,8 +5,9 @@ import { connect } from "react-redux";
 import { getTest, getPersonality } from "../../actions/test";
 
 import Questions from "./Questions";
-import Nav from "../Nav";
-import Footer from "../Footer";
+import Nav from "../../components/Nav/Nav";
+import Footer from "../../components/Footer/Footer";
+import SideBar from "../../components/SideBar/SideBar";
 import Button from "./Button";
 class Test extends React.Component {
   state = {
@@ -191,8 +192,15 @@ class Test extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Nav active="personality" />
-        <div className="container-fluid">
+        <div className="container-fluid display-table">
+          <div className="row display-table-row">
+            <SideBar page="home" />
+            <div className="col-md-10 col-sm-11 display-table-cell v-align">
+              <Nav />
+              <div className="user-dashboard mt-5">
+                <h1>Dashboard</h1>
+                <h1>Test</h1>
+                <div className="container-fluid">
           <div className="row">
             <div className="mt-3 col-md-12">
               <Link to="/personality" className="btn btn-primary ml-auto">
@@ -225,6 +233,12 @@ class Test extends React.Component {
             />
           )}
         </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <Nav active="personality" /> */}
+        
 
         <Footer isAuthenticated={true} />
       </React.Fragment>
