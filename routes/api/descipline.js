@@ -27,4 +27,21 @@ router.get(
       .catch(err => res.json(err));
   }
 );
+
+// Get Descipline For a User
+router.get("/:descipline", (req, res, next) => {
+  const desciplineCheck = req.params.descipline.replace("_", " ");
+  Descipline.find({})
+    .then(descipline => {
+      const sendDescipline = [];
+      for (let i = 0; i < descipline.length; i++) {
+        console.log(descipline[i].descipline.name === desciplineCheck)
+        if (descipline[i].descipline.name === desciplineCheck) {
+          sendDescipline.push(descipline[i].descipline);
+        }
+      }
+      res.json(sendDescipline);
+    })
+    .catch(err => res.json(err));
+});
 module.exports = router;

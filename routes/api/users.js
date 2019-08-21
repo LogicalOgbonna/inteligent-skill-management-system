@@ -58,7 +58,8 @@ router.post("/register", (req, res) => {
                 email: user.email,
                 name: user.name,
                 avatar: user.avatar,
-                admin
+                admin,
+      descipline: user.descipline
               };
               jwt.sign(payload, process.env.secretOrKey, (err, token) => {
                 res.json({
@@ -105,7 +106,8 @@ router.post("/login", (req, res) => {
           email: user.email,
           name: user.name,
           avatar: user.avatar,
-          admin: user.admin
+          admin: user.admin,
+      descipline: user.descipline
         }; // Create JWT Payload
 
         // Sign Token
@@ -134,7 +136,8 @@ router.get(
       id: req.user.id,
       name: req.user.name,
       email: req.user.email,
-      avatar: req.user.avatar
+      avatar: req.user.avatar,
+      descipline: res.user.descipline
     });
   }
 );

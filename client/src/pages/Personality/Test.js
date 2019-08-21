@@ -191,10 +191,10 @@ class Test extends React.Component {
   };
   render() {
     return (
-      <React.Fragment>
+      <div className="dashboard">
         <div className="container-fluid display-table">
           <div className="row display-table-row">
-            <SideBar page="home" />
+            <SideBar page="test" />
             <div className="col-md-10 col-sm-11 display-table-cell v-align">
               <Nav />
               <div className="user-dashboard mt-5">
@@ -241,7 +241,7 @@ class Test extends React.Component {
         
 
         <Footer isAuthenticated={true} />
-      </React.Fragment>
+      </div>
     );
   }
 }

@@ -71,7 +71,7 @@ class UploadPersonalityTest extends Component {
   };
   render() {
     return (
-      <React.Fragment>
+      <div className="dashboard">
         {/* <Nav active="personality" /> */}
         <div className="container-fluid display-table">
           <div className="row display-table-row">
@@ -149,7 +149,7 @@ class UploadPersonalityTest extends Component {
           </div>
         </div>
         <Footer isAuthenticated={true} />
-      </React.Fragment>
+      </div>
     );
   }
 }

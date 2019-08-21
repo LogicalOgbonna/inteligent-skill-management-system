@@ -90,7 +90,7 @@ class UploadCareer extends Component {
   };
   render() {
     return (
-      <React.Fragment>
+      <div className="dashboard">
         <div className="container-fluid display-table">
           <div className="row display-table-row">
             <SideBar page="career" />
@@ -273,7 +273,7 @@ class UploadCareer extends Component {
         </div>
         {/* <Nav active="career" /> */}
         <Footer isAuthenticated={true} />
-      </React.Fragment>
+      </div>
     );
   }
 }

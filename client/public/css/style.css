@@ -1,14 +1,4 @@
 
-    /*Login Signup Page*/
-    /* html {
-        box-sizing: border-box;
-        height: 100%
-    }
-    a:focus,a:hover,a{
-        outline:none;
-        text-decoration: none;
-    } */
-
     .cover a:focus,a:hover,a{
         outline:none;
         text-decoration: none;
@@ -341,7 +331,7 @@
         color: #8492af;
     }
     
-    header {
+   .dashboard header {
         background: #ffffff none repeat scroll 0 0;
         box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
         display: inline-block !important;

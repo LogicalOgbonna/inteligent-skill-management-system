@@ -21,7 +21,10 @@ const split = data => {
 const Questions = ({ question, onChange, finished, choice }) => {
   const Test = () =>
     question ? (
-      <div className="col-md-8 offset-2">
+      <React.Fragment>
+      <div className="row">
+      <div className="col-md-2" />
+       <div className="col-md-8">
         <div className=" pt-3">
           <form action="" className="form-contro">
             <h3 className="text-muted text-center">{question.question}</h3>
@@ -50,6 +53,10 @@ const Questions = ({ question, onChange, finished, choice }) => {
           </form>
         </div>
       </div>
+      <div className="col-md-2" />
+      </div>
+      </React.Fragment>
+     
     ) : (
       <div className="center-spinner">
         <PushSpinner size={50} color="#686769" loading={!question} />

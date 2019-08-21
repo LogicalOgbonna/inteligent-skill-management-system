@@ -208,7 +208,7 @@ class Personality extends Component {
 
   render() {
     return (
-      <div>
+      <div className="dashboard">
         {/* <Nav active="personality" /> */}
         {/* {this.state.loading ? (
           <div className="col-md-6 offset-4 ">

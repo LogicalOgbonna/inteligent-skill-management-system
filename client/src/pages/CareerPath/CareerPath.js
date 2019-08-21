@@ -74,7 +74,7 @@ class Career extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="dashboard">
         <div className="container-fluid display-table">
           <div className="row display-table-row">
             <SideBar page="home" />

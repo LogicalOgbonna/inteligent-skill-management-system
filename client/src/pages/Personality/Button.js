@@ -11,7 +11,8 @@ export default function Button({
 }) {
   return (
     <div style={{ marginBottom: "6%" }} className="row mt-0">
-      <div className="col-md-4 offset-4">
+    <div className="col-md-4" />
+      <div className="col-md-4">
         {questions.length ? (
           <div className="row">
             <div className="col-md-4">
@@ -26,7 +27,7 @@ export default function Button({
             </div>
             <div className="col-md-4">
               <p className="text-muted text-center">
-                {` question ${index + 1} of ${questions.length}`}{" "}
+                {`  ${index + 1} of ${questions.length}`}{" "}
               </p>
             </div>
             <div className="col-md-4 clear-fix">
@@ -42,6 +43,8 @@ export default function Button({
           ""
         )}
       </div>
+    <div className="col-md-4" />
+    
     </div>
   );
 }

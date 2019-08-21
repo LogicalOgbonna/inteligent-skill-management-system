@@ -68,8 +68,9 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="dashboard">
         {/* <Nav active="dashboard" /> */}
+
         <div className="container-fluid display-table">
           <div className="row display-table-row">
             <SideBar page="dashboard" />
@@ -83,7 +84,7 @@ class Dashboard extends Component {
           </div>
         </div>
         <Footer isAuthenticated={true} />
-      </React.Fragment>
+      </div>
     );
   }
 }
