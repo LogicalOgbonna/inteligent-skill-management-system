@@ -11,51 +11,19 @@ import SideBar from "../../components/SideBar/SideBar";
 import { getProfile, createPropfile } from "../../actions/profile";
 
 class Dashboard extends Component {
-  state = {
-    hasProfile: false,
-    profile: [],
-    name: "",
-    school: "",
-    year: "",
-    bio: "",
-    errors: {},
-    loading: true
-  };
+  // onChange = e => {
+  //   this.setState({ [e.target.name]: e.target.value });
+  // };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.profile !== undefined) {
-      this.setState({
-        hasProfile: false,
-        loading: false
-      });
-    }
-    if (nextProps.profile !== null) {
-      this.setState({
-        hasProfile: true,
-        loading: false,
-        profile: nextProps.data
-      });
-    } else {
-      this.setState({ loading: false });
-    }
-  }
-  componentDidMount() {
-    this.props.getProfile();
-  }
+  // validate = data => {
+  //   const errors = {};
+  //   if (!data.name) errors.name = "Enter Name";
+  //   if (!data.school) errors.school = "Enter School";
+  //   if (!data.year) errors.year = "Enter Year";
+  //   if (!data.bio) errors.bio = "Enter Bio";
 
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  validate = data => {
-    const errors = {};
-    if (!data.name) errors.name = "Enter Name";
-    if (!data.school) errors.school = "Enter School";
-    if (!data.year) errors.year = "Enter Year";
-    if (!data.bio) errors.bio = "Enter Bio";
-
-    return errors;
-  };
+  //   return errors;
+  // };
 
   onSubmit = e => {
     const errors = this.validate(this.state);
@@ -69,8 +37,6 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        {/* <Nav active="dashboard" /> */}
-
         <div className="container-fluid display-table">
           <div className="row display-table-row">
             <SideBar page="dashboard" />

@@ -57,8 +57,8 @@ export const getProfile = () => dispatch => {
   axios
     .get("/api/profile")
     .then(profile => {
-      console.log(profile.data.data);
-      dispatch(userProfile(profile.data.data));
+      console.log(profile.data);
+      dispatch(userProfile(profile.data));
     })
     .catch(error => dispatch(errors(error.response)));
 };

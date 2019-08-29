@@ -49,7 +49,7 @@ class Banner extends React.Component {
     if (!data.name) errors.name = "Enter name";
     if (!data.email) errors.email = "Enter Email";
     if (!data.descipline) errors.descipline = "Enter Descipline";
-    
+
     if (!validator.isEmail(data.email)) errors.email = "Invalid Email";
     if (data.password !== data.confirm_password)
       errors.confirm_password = "Password must match";
@@ -93,32 +93,26 @@ class Banner extends React.Component {
         <div className="layer">
           <div className="container">
             <div className="row">
-              <div className="col-lg-7 banner-text-w3pvt">
-                {/* <Slider /> */}
+              <div
+                className="padding"
+                style={{ marginBottom: "50%", marginTop: "30%" }}
+              >
+                <RegisterForm
+                  loading={this.state.loading}
+                  onSubmit={this.onSubmit}
+                  email={this.state.email}
+                  password={this.state.password}
+                  confirm_password={this.state.confirm_password}
+                  onChange={this.onChange}
+                  login={this.state.login}
+                  onLogin={this.onLogin}
+                  errors={this.state.errors}
+                  name={this.state.name}
+                  descipline={this.state.descipline}
+                />
               </div>
-              <div className="col-lg-5 col-md-8 px-lg-3 px-0">
-                <div className="banner-form-w3 ml-lg-5">
-                  {!this.props.isAuthenticated ? (
-                    <div className="padding">
-                      <RegisterForm
-                        loading={this.state.loading}
-                        onSubmit={this.onSubmit}
-                        email={this.state.email}
-                        password={this.state.password}
-                        confirm_password={this.state.confirm_password}
-                        onChange={this.onChange}
-                        login={this.state.login}
-                        onLogin={this.onLogin}
-                        errors={this.state.errors}
-                        name={this.state.name}
-                        descipline={this.state.descipline}
-                      />
-                    </div>
-                  ) : (
-                    <div className="">{/* <Card /> */}</div>
-                  )}
-                </div>
-              </div>
+              {/* </div>
+              </div> */}
             </div>
           </div>
         </div>

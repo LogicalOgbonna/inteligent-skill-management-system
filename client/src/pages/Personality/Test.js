@@ -201,44 +201,37 @@ class Test extends React.Component {
                 <h1>Dashboard</h1>
                 <h1>Test</h1>
                 <div className="container-fluid">
-          <div className="row">
-            <div className="mt-3 col-md-12">
-              <Link to="/personality" className="btn btn-primary ml-auto">
-                Back
-              </Link>
-            </div>
-          </div>
-          <Questions
-            onChange={this.onChange}
-            question={this.state.questions[this.state.index]}
-            finished={this.state.finished}
-            choice={this.state.choice}
-            code={this.state.code}
-            realistic={this.state.realistic}
-            artistic={this.state.artistic}
-            social={this.state.social}
-            enterprising={this.state.enterprising}
-            convention={this.state.convention}
-            investigative={this.state.investigative}
-          />
+                  <div className="row" />
+                  <Questions
+                    onChange={this.onChange}
+                    question={this.state.questions[this.state.index]}
+                    finished={this.state.finished}
+                    choice={this.state.choice}
+                    code={this.state.code}
+                    realistic={this.state.realistic}
+                    artistic={this.state.artistic}
+                    social={this.state.social}
+                    enterprising={this.state.enterprising}
+                    convention={this.state.convention}
+                    investigative={this.state.investigative}
+                  />
 
-          {!this.state.finished && (
-            <Button
-              index={this.state.index}
-              lastIndex={this.state.lastIndex}
-              questions={this.state.questions}
-              next={this.next}
-              previous={this.previous}
-              finish={this.finish}
-            />
-          )}
-        </div>
+                  {!this.state.finished && (
+                    <Button
+                      index={this.state.index}
+                      lastIndex={this.state.lastIndex}
+                      questions={this.state.questions}
+                      next={this.next}
+                      previous={this.previous}
+                      finish={this.finish}
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
         {/* <Nav active="personality" /> */}
-        
 
         <Footer isAuthenticated={true} />
       </div>

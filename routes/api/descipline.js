@@ -35,7 +35,6 @@ router.get("/:descipline", (req, res, next) => {
     .then(descipline => {
       const sendDescipline = [];
       for (let i = 0; i < descipline.length; i++) {
-        console.log(descipline[i].descipline.name === desciplineCheck)
         if (descipline[i].descipline.name === desciplineCheck) {
           sendDescipline.push(descipline[i].descipline);
         }

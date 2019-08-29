@@ -10,6 +10,7 @@ dotenv.config();
 const desciplineRoute = require("./routes/api/descipline");
 const usersRoute = require("./routes/api/users");
 const questionRoute = require("./routes/api/questions");
+const profileRoute = require("./routes/api/profile");
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use(bodyParser.json());
 app.use("/api/descipline", desciplineRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/questions", questionRoute);
+app.use("/api/profile", profileRoute);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {

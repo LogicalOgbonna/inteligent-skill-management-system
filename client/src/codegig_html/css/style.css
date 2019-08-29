@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url("https://fonts.googleapis.com/css?family=Lato");
 
 :root {
   --primary-color: #568c9b;
@@ -12,7 +12,7 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   margin: 0;
   color: #333;
   background: #f4f4f4;
@@ -33,7 +33,7 @@ a:hover {
 }
 
 .container {
-  max-width: 960px;
+  max-width: 500px;
   padding: 1rem 4rem;
   margin: auto;
   overflow: hidden;
@@ -103,7 +103,7 @@ header.inner {
 
 /* Home Search */
 .search-wrap {
-  background: url('../img/showcase.jpg') no-repeat center center fixed / cover;
+  background: url("../img/showcase.jpg") no-repeat center center fixed / cover;
   height: 100vh;
   width: 100%;
   padding: 1.3rem 3rem;
@@ -121,7 +121,7 @@ header.inner {
   text-align: center;
 }
 
-.search-form input[type='submit'] {
+.search-form input[type="submit"] {
   background: var(--primary-color);
   border: 1px solid var(--primary-color);
   color: #fff;
@@ -130,10 +130,14 @@ header.inner {
   transition: all 0.8s;
 }
 
-.search-form input[type='submit']:hover {
+.search-form input[type="submit"]:hover {
   background: var(--primary-hover-color);
   border: 1px solid var(--primary-hover-color);
 }
+/* .search-form input[type="text"]:hover {
+  background: var(--primary-hover-color);
+  border: 1px solid var(--primary-hover-color);
+} */
 
 .search-form {
   display: flex;
@@ -151,12 +155,15 @@ header.inner {
   padding: 0 0 0 10px;
   background: #fff;
   line-height: 50px;
-  font-size: 1rem;
+  /* font-size: 1rem; */
   border-radius: 0;
   outline: 0;
 }
 
-input[type='search'] {
+input[type="search"] {
+  flex-basis: 600px;
+}
+input[type="text"] {
   flex-basis: 600px;
 }
 
@@ -241,7 +248,10 @@ label {
     width: 100%;
   }
 
-  input[type='search'] {
+  input[type="search"] {
+    flex-basis: 100%;
+  }
+  input[type="text"] {
     flex-basis: 100%;
   }
 
@@ -284,10 +294,12 @@ label {
     flex-direction: column;
   }
 
-  input[type='search'] {
+  input[type="search"] {
     flex-basis: 0;
   }
-
+  input[type="text"] {
+    flex-basis: 0;
+  }
   .search-form i {
     display: none;
   }

@@ -1,49 +1,182 @@
 import propTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
+import Autosuggest from "react-autosuggest";
 
-import Header from "../../components/Header/Header";
-import Banner from "../../components/Banner/Banner";
-// import Services from "../../components/Services";
-import Footer from "../../components/Footer/Footer";
-import "../../codegig_html/css/style.css"
+import "../../codegig_html/css/style.css";
 
-const Landing = ({ isAuthenticated }) => {
-  return (
-    <div>
-    <header>
-    <h2><a href="/"><i className="fas fa-code"></i>
-        Code</a></h2>
-    <nav>
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/al">All Gigs</a>
-        </li>
-        <li>
-          <a href="/login">Login</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+const languages = [
+  {
+    name: "C",
+    year: 1972
+  },
+  {
+    name: "C#",
+    year: 2000
+  },
+  {
+    name: "C++",
+    year: 1983
+  },
+  {
+    name: "Clojure",
+    year: 2007
+  },
+  {
+    name: "Elm",
+    year: 2012
+  },
+  {
+    name: "Go",
+    year: 2009
+  },
+  {
+    name: "Haskell",
+    year: 1990
+  },
+  {
+    name: "Java",
+    year: 1995
+  },
+  {
+    name: "Javascript",
+    year: 1995
+  },
+  {
+    name: "Perl",
+    year: 1987
+  },
+  {
+    name: "PHP",
+    year: 1995
+  },
+  {
+    name: "Python",
+    year: 1991
+  },
+  {
+    name: "Ruby",
+    year: 1995
+  },
+  {
+    name: "Scala",
+    year: 2003
+  }
+];
 
-  <section id="search" className="search-wrap">
-    <h1>Find A Code Career</h1>
-    <form action="gigs.html" className="search-form">
-      <i className="fas fa-search"></i>
-      <input type="search" name="term" placeholder="Javascript, PHP, Rails, etc..." />
-      <input type="submit" value="Search" />
-    </form>
-  </section>
-      {/* <Header isAuthenticated={isAuthenticated} />
-      <Banner isAuthenticated={isAuthenticated} /> */}
-      {/* <Services /> */}
-      {/* <Footer isAuthenticated={isAuthenticated} /> */}
-    </div>
-  );
-};
+// https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
+function escapeRegexCharacters(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function getSuggestions(value) {
+  const escapedValue = escapeRegexCharacters(value.trim());
+
+  if (escapedValue === "") {
+    return [];
+  }
+
+  const regex = new RegExp("^" + escapedValue, "i");
+
+  return languages.filter(language => regex.test(language.name));
+}
+
+function getSuggestionValue(suggestion) {
+  return suggestion.name;
+}
+
+function renderSuggestion(suggestion) {
+  return <span>{suggestion.name}</span>;
+}
+class Landing extends React.Component {
+  state = {
+    value: "",
+    suggestions: [],
+    term: ""
+  };
+
+  onChange = (event, { newValue, method }) => {
+    this.setState({
+      value: newValue
+    });
+  };
+
+  onSuggestionsFetchRequested = ({ value }) => {
+    this.setState({
+      suggestions: getSuggestions(value)
+    });
+  };
+
+  onSuggestionsClearRequested = () => {
+    this.setState({
+      suggestions: []
+    });
+  };
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  onSubmit = e => {
+    e.preventDefault();
+    const search = this.state.term.replace(" ", "_");
+    window.location.href = `/careers/${search}`;
+  };
+  render() {
+    const { value, suggestions } = this.state;
+    const inputProps = {
+      placeholder: "Type 'c'",
+      value,
+      onChange: this.onChange
+    };
+
+    return (
+      <div>
+        <header>
+          <h2>
+            <a href="/">
+              <i className="fas fa-code" />
+              Career
+            </a>
+          </h2>
+          <nav>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/careers">All Careers</a>
+              </li>
+              <li>
+                <a href="/login">Login</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <section id="search" className="search-wrap">
+          <h1>Find A Career</h1>
+          <form onSubmit={this.onSubmit} className="search-form">
+            <i className="fas fa-search" />
+            <input
+              type="text"
+              name="term"
+              onChange={this.onChange}
+              placeholder="Data Science, AutoCard, Graphic Designer, etc..."
+            />
+            {/* <Autosuggest
+              suggestions={suggestions}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+              getSuggestionValue={getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              inputProps={inputProps}
+            /> */}
+            <input type="submit" value="submit" />
+          </form>
+        </section>
+      </div>
+    );
+  }
+}
 
 Landing.propTypes = {
   isAuthenticated: propTypes.bool.isRequired
