@@ -27,8 +27,7 @@ const UserSchema = new Schema({
     default: false
   },
   descipline: {
-    type: String,
-    required: true
+    type: String
   }
 });
 

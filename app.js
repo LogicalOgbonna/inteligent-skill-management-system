@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const User = require("./model/User");
 
 const passport = require("passport");
 const dotenv = require("dotenv");
@@ -13,11 +14,6 @@ const questionRoute = require("./routes/api/questions");
 const profileRoute = require("./routes/api/profile");
 
 const app = express();
-
-mongoose
-  .connect(process.env.MongoDbURI, { useNewUrlParser: true })
-  .then(() => console.log("Database connected succesfully"))
-  .catch(err => console.log(err));
 
 // Passport middleware
 app.use(passport.initialize());
@@ -43,4 +39,28 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.listen(5000, () => console.log("App Started in localhost:5000"));
+mongoose
+  .connect(process.env.MongoDbURI, { useNewUrlParser: true })
+  .then(() => {
+    User.find({ email: "admin@example.com" }).then(user => {
+      console.log(user);
+      if (!user.length) {
+        const user = new User({
+          admin: true,
+          name: "admin",
+          email: "admin@example.com",
+          password: "admin-secret",
+          avatar: ""
+        });
+
+        user.save().then(data => {
+          app.listen(5000, () => console.log("App Started in localhost:5000"));
+          console.log("Admin Created");
+        });
+      } else {
+        app.listen(5000, () => console.log("App Started in localhost:5000"));
+      }
+    });
+    console.log("Database connected succesfully");
+  })
+  .catch(err => console.log(err));
