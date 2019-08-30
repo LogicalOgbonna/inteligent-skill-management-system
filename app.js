@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const User = require("./model/User");
+const bcrypt = require("bcryptjs");
 
 const passport = require("passport");
 const dotenv = require("dotenv");
@@ -43,19 +44,30 @@ mongoose
   .connect(process.env.MongoDbURI, { useNewUrlParser: true })
   .then(() => {
     User.find({ email: "admin@example.com" }).then(user => {
-      console.log(user);
       if (!user.length) {
         const user = new User({
           admin: true,
           name: "admin",
           email: "admin@example.com",
           password: "admin-secret",
-          avatar: ""
+          avatar:
+            "//www.gravatar.com/avatar/f620f4647fb816073c9152a284245e64?s=200&r=pg&d=mm"
         });
 
-        user.save().then(data => {
-          app.listen(5000, () => console.log("App Started in localhost:5000"));
-          console.log("Admin Created");
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(user.password, salt, (err, hash) => {
+            if (err) throw err;
+            user.password = hash;
+            user
+              .save()
+              .then(() => {
+                app.listen(5000, () =>
+                  console.log("App Started in localhost:5000")
+                );
+                console.log("Admin Created");
+              })
+              .catch(err => console.log(err));
+          });
         });
       } else {
         app.listen(5000, () => console.log("App Started in localhost:5000"));

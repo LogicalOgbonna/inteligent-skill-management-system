@@ -33,23 +33,23 @@ class UploadPersonalityTest extends Component {
             question_option: [
               {
                 option_value: "1",
-                weight: -2
-              },
-              {
-                option_value: "2",
-                weight: -1
-              },
-              {
-                option_value: "3",
-                weight: 0
-              },
-              {
-                option_value: "4",
                 weight: 1
               },
               {
-                option_value: "5",
+                option_value: "2",
                 weight: 2
+              },
+              {
+                option_value: "3",
+                weight: 3
+              },
+              {
+                option_value: "4",
+                weight: 4
+              },
+              {
+                option_value: "5",
+                weight: 5
               }
             ]
           }

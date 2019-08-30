@@ -11,15 +11,12 @@ import Card from "../../components/Card/Card";
 class SingleSpecialty extends Component {
   componentDidMount() {
     // console.log(this.props.user);
-    console.log(this.props.match.params.id);
     this.props.userDescipline(this.props.user.descipline);
   }
   render() {
     const id = this.props.match.params.id;
-    const descipline =
-      this.props.desciplines &&
-      this.props.desciplines[0].fields.filter(desc => desc._id === id);
-    console.log(descipline);
+    // prettier-ignore
+    const descipline = this.props.desciplines.length > 0 && this.props.desciplines[0].fields.filter(desc => desc._id === id);
 
     return (
       <div className="dashboard">
@@ -32,10 +29,11 @@ class SingleSpecialty extends Component {
                 <h1> Specialty</h1>
                 <h1>
                   {" "}
-                  {this.props.desciplines && this.props.desciplines[0].name}
+                  {this.props.desciplines.length &&
+                    this.props.desciplines[0].name}
                 </h1>
 
-                {descipline && (
+                {descipline.length && (
                   <div className="row">
                     {/* <div className="col-md-2" /> */}
                     <div className="col-md-6">

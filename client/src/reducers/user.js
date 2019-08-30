@@ -1,7 +1,7 @@
 import { USER_ERROR, USER_DESCIPLINE } from '../actions/types';
 
 
-const User = (state ={}, action={}) => {
+const User = (state ={ descipline: []}, action={}) => {
   switch (action.type) {
     case USER_DESCIPLINE:
       return {

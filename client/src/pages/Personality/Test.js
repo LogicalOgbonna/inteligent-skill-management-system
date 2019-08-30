@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { getTest, getPersonality } from "../../actions/test";
+import { userDescipline } from "../../actions/users";
 
 import Questions from "./Questions";
 import Nav from "../../components/Nav/Nav";
@@ -19,12 +20,16 @@ class Test extends React.Component {
     finished: false,
     answers: [],
     questions: [],
-    realistic: 0,
-    investigative: 0,
-    artistic: 0,
-    social: 0,
-    enterprising: 0,
-    convention: 0,
+    dataScience: 0,
+    ux: 0,
+    frontEnd: 0,
+    networkAnalyst: 0,
+    systemAnalyst: 0,
+    backEnd: 0,
+    database: 0,
+    quality: 0,
+    networkEngineer: 0,
+    graphics: 0,
     code: ""
   };
 
@@ -58,51 +63,76 @@ class Test extends React.Component {
 
   next = () => {
     const {
-      realistic,
-      investigative,
-      artistic,
-      social,
-      enterprising,
-      convention,
+      dataScience,
+      ux,
+      frontEnd,
+      networkAnalyst,
+      systemAnalyst,
+      backEnd,
+      database,
+      quality,
+      networkEngineer,
       type,
-      weight
+      weight,
+      graphics
     } = this.state;
-    type === "realistic" &&
+    console.log(type);
+    type === "Data Science" &&
       this.setState({
         ...this.state,
-        realistic: realistic + weight
+        dataScience: dataScience + weight
       });
 
-    type === "artistic" &&
+    type === "Front End Engineer" &&
       this.setState({
         ...this.state,
-        artistic: artistic + weight
+        frontEnd: frontEnd + weight
       });
 
-    type === "investigative" &&
+    type === "User Experience" &&
       this.setState({
         ...this.state,
-        investigative: investigative + weight
+        ux: ux + weight
       });
 
-    type === "social" &&
+    type === "Network Analyst" &&
       this.setState({
         ...this.state,
-        social: social + weight
+        networkAnalyst: networkAnalyst + weight
       });
 
-    type === "enterprising" &&
+    type === "System Analyst" &&
       this.setState({
         ...this.state,
-        enterprising: enterprising + weight
+        systemAnalyst: systemAnalyst + weight
       });
 
-    type === "convention" &&
+    type === "Back End Engineer" &&
       this.setState({
         ...this.state,
-        convention: convention + weight
+        backEnd: backEnd + weight
       });
 
+    type === "Database Administrator" &&
+      this.setState({
+        ...this.state,
+        database: database + weight
+      });
+    type === "Quality Assurance Manager" &&
+      this.setState({
+        ...this.state,
+        quality: quality + weight
+      });
+    type === "Network Engineer" &&
+      this.setState({
+        ...this.state,
+        networkEngineer: networkEngineer + weight
+      });
+    type === "Motion Graphics Designer" &&
+      this.setState({
+        ...this.state,
+        graphics: graphics + weight
+      });
     this.setState(prev => {
       return {
         index: prev.index + 1,
@@ -115,49 +145,73 @@ class Test extends React.Component {
   previous = () => {
     this.state.answers.pop();
     const {
-      realistic,
-      investigative,
-      artistic,
-      social,
-      enterprising,
-      convention,
+      dataScience,
+      ux,
+      frontEnd,
+      networkAnalyst,
+      systemAnalyst,
+      backEnd,
+      database,
+      quality,
+      networkEngineer,
       type,
-      weight
+      weight,
+      graphics
     } = this.state;
-    type === "realistic" &&
+    type === "Data Science" &&
       this.setState({
         ...this.state,
-        realistic: realistic - weight
+        dataScience: dataScience - weight
       });
 
-    type === "artistic" &&
+    type === "Front End Engineer" &&
       this.setState({
         ...this.state,
-        artistic: artistic - weight
+        frontEnd: frontEnd - weight
       });
 
-    type === "investigative" &&
+    type === "User Experience" &&
       this.setState({
         ...this.state,
-        investigative: investigative - weight
+        ux: ux - weight
       });
 
-    type === "social" &&
+    type === "Network Analyst" &&
       this.setState({
         ...this.state,
-        social: social - weight
+        networkAnalyst: networkAnalyst - weight
       });
 
-    type === "enterprising" &&
+    type === "System Analyst" &&
       this.setState({
         ...this.state,
-        enterprising: enterprising - weight
+        systemAnalyst: systemAnalyst - weight
       });
 
-    type === "convention" &&
+    type === "Back End Engineer" &&
       this.setState({
         ...this.state,
-        convention: convention - weight
+        backEnd: backEnd - weight
+      });
+    type === "Database Administrator" &&
+      this.setState({
+        ...this.state,
+        database: database - weight
+      });
+    type === "Quality Assurance Manager" &&
+      this.setState({
+        ...this.state,
+        quality: quality - weight
+      });
+    type === "Network Engineer" &&
+      this.setState({
+        ...this.state,
+        networkEngineer: networkEngineer - weight
+      });
+    type === "Motion Graphics Designer" &&
+      this.setState({
+        ...this.state,
+        graphics: graphics - weight
       });
     this.setState(prev => {
       return {
@@ -172,22 +226,28 @@ class Test extends React.Component {
 
   finish = () => {
     const array = [];
-    array.push({ value: this.state.realistic, name: "realistic" });
-    array.push({ value: this.state.investigative, name: "investigative" });
-    array.push({ value: this.state.artistic, name: "artistic" });
-    array.push({ value: this.state.social, name: "social" });
-    array.push({ value: this.state.enterprising, name: "enterprising" });
-    array.push({ value: this.state.convention, name: "convention" });
+    array.push({ value: this.state.dataScience, name: "Data Science" });
+    array.push({ value: this.state.ux, name: "User Experience" });
+    array.push({ value: this.state.frontEnd, name: "Front End Engineer" });
+    array.push({ value: this.state.networkAnalyst, name: "Network Analyst" });
+    array.push({ value: this.state.systemAnalyst, name: "System Analyst" });
+    array.push({ value: this.state.backEnd, name: "Back End Engineer" });
+    array.push({ value: this.state.database, name: "Database Administrator" });
+    array.push({
+      value: this.state.quality,
+      name: "Quality Assurance Manager"
+    });
+    array.push({ value: this.state.networkEngineer, name: "Network Engineer" });
+    array.push({
+      value: this.state.graphics,
+      name: "Motion Graphics Designer"
+    });
 
     const sortedNumbers = array.sort(this.sortNumbers);
-    const code = `${sortedNumbers[5].name
-      .charAt(0)
-      .toUpperCase()}${sortedNumbers[4].name
-      .charAt(0)
-      .toUpperCase()}${sortedNumbers[3].name.charAt(0).toUpperCase()}`;
-    localStorage.code = JSON.stringify(code);
-    this.props.getPersonality(code);
+    const code = `${sortedNumbers[sortedNumbers.length - 1].name}, ${sortedNumbers[sortedNumbers.length - 2].name}`;
+    // this.props.getPersonality(code);
     this.setState({ finished: true, code });
+    this.props.userDescipline(this.props.user.descipline);
   };
   render() {
     return (
@@ -208,12 +268,7 @@ class Test extends React.Component {
                     finished={this.state.finished}
                     choice={this.state.choice}
                     code={this.state.code}
-                    realistic={this.state.realistic}
-                    artistic={this.state.artistic}
-                    social={this.state.social}
-                    enterprising={this.state.enterprising}
-                    convention={this.state.convention}
-                    investigative={this.state.investigative}
+                    desciplines={this.props.desciplines}
                   />
 
                   {!this.state.finished && (
@@ -240,10 +295,12 @@ class Test extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  tests: state.user.tests
+  tests: state.user.tests,
+  user: state.user.user,
+  desciplines: state.client.descipline
 });
 
 export default connect(
   mapStateToProps,
-  { getTest, getPersonality }
+  { getTest, getPersonality, userDescipline }
 )(Test);
