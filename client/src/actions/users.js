@@ -16,6 +16,7 @@ export const userDescipline = data => dispatch => {
   axios
     .get(`/api/descipline/${descipline}`)
     .then(data => {
+      console.log(data);
       dispatch(gotUserdescipline(data.data));
     })
     .catch(err => dispatch(errors(err)));

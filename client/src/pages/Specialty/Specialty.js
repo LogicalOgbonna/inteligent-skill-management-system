@@ -25,10 +25,10 @@ class Specialty extends Component {
                 <h1> Specialty</h1>
                 <h1>
                   {" "}
-                  {this.props.desciplines && this.props.desciplines[0].name}
+                  {this.props.desciplines[0] && this.props.desciplines[0].name}
                 </h1>
                 <div className="row">
-                  {this.props.desciplines &&
+                  {this.props.desciplines[0] &&
                     this.props.desciplines[0].fields.map(spel => (
                       <Card key={spel._id} spel={spel} />
                     ))}

@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import "../../codegig_html/css/style.css";
 import { connect } from "react-redux";
 import { getDesciplines } from "../../actions/upload";
+import { getJobs } from "../../actions/jobs";
 import CareerCard from "../../components/Card/CareerCard";
+import JobsCard from "../../components/Card/JobsCard";
 
 class Careers extends Component {
   componentDidMount() {
     this.props.getDesciplines();
+    this.props.getJobs();
   }
   render() {
     return (
@@ -53,29 +56,8 @@ class Careers extends Component {
                         <h1>Jobs</h1>
                         <hr style={{ color: "#0e1a35" }} />
 
-                        <div className="gig">
-                          <h3>Looking for a react developer</h3>
-                          <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Vero aspernatur tempora nisi quibusdam
-                            doloribus adipisci cumque quidem perferendis. Iusto,
-                            natus!
-                          </p>
-                          <ul>
-                            <li>Budget: $10,000</li>
-                            <li>
-                              <a href="#" className="btn btn-reverse">
-                                Apply Now
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="tech">
-                            <small>
-                              Technologies Needed:{" "}
-                              <span>react, redux, javascript</span>
-                            </small>
-                          </div>
-                        </div>
+                        <JobsCard />
+                        <JobsCard />
                       </section>
                     </div>
                   </div>
@@ -140,5 +122,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getDesciplines }
+  { getDesciplines, getJobs }
 )(Careers);
