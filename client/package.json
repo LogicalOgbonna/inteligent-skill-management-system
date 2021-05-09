@@ -11,7 +11,7 @@
     "jquery": "^3.4.1",
     "jwt-decode": "^2.2.0",
     "loadash": "^1.0.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "material-table": "^1.28.3",
     "mui-datatables": "^2.0.0-beta.59",
     "popper.js": "^1.15.0",
